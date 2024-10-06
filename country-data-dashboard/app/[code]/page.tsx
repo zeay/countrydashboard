@@ -1,4 +1,3 @@
-// app/[code]/page.tsx
 "use client";
 
 import { useQuery } from 'react-query';
@@ -6,7 +5,6 @@ import { fetchCountryByCode } from '../../lib/api';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
-// Dynamically load the Map component to avoid server-side rendering issues with Leaflet
 const Map = dynamic(() => import('../Map'), { ssr: false });
 
 export default function CountryDetail({ params }: { params: { code: string } }) {
@@ -52,7 +50,6 @@ export default function CountryDetail({ params }: { params: { code: string } }) 
                     .map((currency: any) => `${currency.name} (${currency.symbol})`)
                     .join(', ')}</p>
 
-                {/* Display a map with the country's location */}
                 {country[0]?.latlng && (
                     <div className="mt-6">
                         <h3 className="text-xl font-bold mb-4">Country Location</h3>
